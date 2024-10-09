@@ -1,0 +1,77 @@
+<%- include('partials/_header'); -%>
+    <style>
+    /* Gaya untuk background dan kontainer login */
+    body {
+        position: relative;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://elektro.ft.undip.ac.id/v3/wp-content/uploads/2024/05/RAKER-HME-2024-3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px); /* Menambahkan efek blur pada latar belakang */
+            z-index: -1; /* Memastikan latar belakang tetap di belakang konten */
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.8); /* Latar belakang putih dengan opasitas untuk keterbacaan */
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1; /* Memastikan kontainer login tetap di atas latar belakang buram */
+        }
+    </style>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL-eihGmdR1bG0MjePi9uWmQSfSnkkIligAA&s" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+                Database Teknik Elektro
+            </a>
+        </nav>
+    </nav>
+
+    <!-- Menu Utama Form Login -->
+    <div class="container mt-5">
+        <% if (messages.error) { %>
+            <%= messages.error %>
+        <% } %>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">Login</h3>
+                            <form action="/login" method="post">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="/register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<%- include('partials/_footer'); -%>

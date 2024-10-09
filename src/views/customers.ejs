@@ -1,0 +1,91 @@
+<%- include('partials/_header'); -%>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL-eihGmdR1bG0MjePi9uWmQSfSnkkIligAA&s" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+        Database Teknik Elektro
+    </a>
+    
+    <!-- Form Pencarian -->
+    <form action="/search" method="get" class="form-inline my-2 my-lg-0 mx-auto">
+        <div class="input-group">
+            <input class="form-control" type="search" name="query" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-light btn-sm" type="button" onclick="window.location.href='/';">x</button>
+            </div>
+        </div>
+        <button class="btn btn-outline-success ml-2" type="submit">Search</button>
+    </form>
+
+    <!-- Tombol Logout -->
+    <div class="ml-auto">
+        <a href="/logout" class="btn btn-outline-light">Logout</a>
+    </div>
+</nav>
+
+<!-- Halaman Utama -->
+<div class="container mt-5">
+    <h1 class="text-center">Mahasiswa</h1>
+</h1>
+<div class="container">
+<div class="row mt-5">
+    <div class="col-md-7">
+        <!-- Tabel Daftar Pelanggan -->
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Angkatan</th>
+                    <th>No. Telepon</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (data) { %>
+                    <% for (var i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= (i + 1) %></td>
+                            <td><%= data[i].name %></td>
+                            <td><%= data[i].address %></td>
+                            <td><%= data[i].angkatan %></td>
+                            <td><%= data[i].phone %></td>
+                            <td>
+                                <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                                <a href="/update/<%= data[i].id %>" class="btn btn-info">Update</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-5">
+        <!-- Form Input Data Baru -->
+        <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Nama" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="address" placeholder="Alamat" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="angkatan" placeholder="Angkatan" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" placeholder="No. Telepon" class="form-control" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Save Data
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include('partials/_footer'); -%>
