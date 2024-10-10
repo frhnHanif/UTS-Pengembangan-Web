@@ -14,18 +14,9 @@ Menginstal dependensi proyek:
 
 ```shell
 npm ci
-npm install express
-npm install morgan
-npm install mysql
-npm install express-myconnection
-npm install bcrypt
-npm install passport
-npm install express-flash
-npm install express-session
-npm install dotenv
 ```
 Buat database MySQL seperti pada file database/db.sql
-Siapkan database MySQL Anda dan perbarui konfigurasi database di file config.js dengan kredensial Anda.
+Siapkan database MySQL Anda dan perbarui konfigurasi database di file app.js dan passport-config.js dengan kredensial Anda.
 
 Jalankan aplikasi:
 
